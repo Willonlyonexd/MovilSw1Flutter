@@ -17,6 +17,12 @@ dependencies:
   cupertino_icons: ^1.0.6
   table_calendar: ^3.0.7
   carousel_slider: ^4.1.1
+  http: ^0.13.5
+  cached_network_image: ^3.2.1
+  url_launcher: ^6.0.20  # Or the latest version
+  shared_preferences: ^2.0.13 # Asegúrate de usar la última versión compatible
+
+
 
 dev_dependencies:
   flutter_test:

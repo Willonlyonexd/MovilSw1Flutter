@@ -1,7 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import '../services/api_auth.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatelessWidget {
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
+  void _login(BuildContext context) async {
+    final email = emailController.text;
+    final password = passwordController.text;
+
+    final response = await ApiAuth.login(email, password);
+
+    if (response['success'] == true) {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      await prefs.setString('token', response['data']['token']);
+      
+      // Navegar al dashboard después de un inicio de sesión exitoso
+      Navigator.pushReplacementNamed(context, '/dashboard');
+    } else {
+      // Muestra un mensaje de error
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(response['message'] ?? 'Error al iniciar sesión')),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,7 +38,6 @@ class LoginScreen extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                // Animación Lottie encima del título
                 Lottie.asset(
                   'assets/lottie/animacionlogin1.json',
                   width: 200,
@@ -21,9 +45,8 @@ class LoginScreen extends StatelessWidget {
                   fit: BoxFit.cover,
                 ),
                 const SizedBox(height: 20),
-                // Título de Login
                 Text(
-                  'Agenda Electronica Escolar',
+                  'Agenda Electrónica Escolar',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 32,
@@ -31,16 +54,12 @@ class LoginScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 20),
-                // Campos de Email y Contraseña
-                _buildTextField(Icons.email, 'Codigo'),
+                _buildTextField(emailController, Icons.email, 'Correo electrónico'),
                 const SizedBox(height: 10),
-                _buildTextField(Icons.lock, 'Contraseña', obscureText: true),
+                _buildTextField(passwordController, Icons.lock, 'Contraseña', obscureText: true),
                 const SizedBox(height: 20),
-                // Botón de inicio de sesión
                 ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushReplacementNamed(context, '/dashboard');
-                  },
+                  onPressed: () => _login(context),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF14E584),
                     padding: const EdgeInsets.symmetric(
@@ -64,9 +83,10 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildTextField(IconData icon, String hint,
+  Widget _buildTextField(TextEditingController controller, IconData icon, String hint,
       {bool obscureText = false}) {
     return TextField(
+      controller: controller,
       obscureText: obscureText,
       style: const TextStyle(color: Colors.white),
       decoration: InputDecoration(
