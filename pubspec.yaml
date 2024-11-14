@@ -90,6 +90,8 @@ flutter:
     - assets/lottie/comunicadoPrin3.png
     - assets/lottie/usertop.json
     - assets/lottie/userdown.json
+    - assets/lottie/Tareaslottie.json
+
 
 
   #   - images/a_dot_burr.jpeg

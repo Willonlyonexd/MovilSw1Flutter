@@ -51,7 +51,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 const SizedBox(height: 20),
                 Text(
-                  'Colegio Multicultural Wil',
+                  'Colegio Multicultural',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 32,

@@ -167,7 +167,7 @@ class _MediaListState extends State<MediaList> {
               ),
               TextButton(
                 onPressed: () => _extractAndTranslateText(media.url),
-                child: Text("Extraer y traducir texto"),
+                child: Text("Extraer y traducir texto", style: TextStyle(color: Colors.white)),
               ),
             ],
           );
@@ -184,7 +184,7 @@ class _MediaListState extends State<MediaList> {
               ),
               TextButton(
                 onPressed: () => _transcribeAndTranslateMedia(media.url),
-                child: Text("Transcribir y traducir audio"),
+                child: Text("Transcribir y traducir audio",style: TextStyle(color: Colors.white)),
               ),
             ],
           );
@@ -232,7 +232,7 @@ class _MediaListState extends State<MediaList> {
               ),
               TextButton(
                 onPressed: () => _transcribeAndTranslateMedia(media.url),
-                child: Text("Transcribir y traducir video"),
+                child: Text("Transcribir y traducir video",style: TextStyle(color: Colors.white)),
               ),
             ],
           );

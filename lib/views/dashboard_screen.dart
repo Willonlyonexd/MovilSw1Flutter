@@ -203,7 +203,7 @@ class _HomeDashboardState extends State<HomeDashboard> {
                 value: materia['progreso'],
                 minHeight: 10,
                 backgroundColor: Colors.grey,
-                color: Colors.yellow,
+                color: Color.fromARGB(255, 17, 205, 219),
               ),
               const SizedBox(height: 10),
             ],
