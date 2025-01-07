@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:carousel_slider/carousel_slider.dart';
+//import 'package:carousel_slider/carousel_slider.dart';
 import 'package:lottie/lottie.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import './AgendaScreen.dart';
@@ -112,35 +112,35 @@ class _HomeDashboardState extends State<HomeDashboard> {
               ],
             ),
             const SizedBox(height: 20),
-            CarouselSlider(
-              options: CarouselOptions(
-                height: 250,
-                autoPlay: true,
-                enlargeCenterPage: true,
-                aspectRatio: 2.0,
-              ),
-              items: carouselImages.map((imagePath) {
-                return Builder(
-                  builder: (BuildContext context) {
-                    return Container(
-                      width: MediaQuery.of(context).size.width,
-                      margin: const EdgeInsets.symmetric(horizontal: 5.0),
-                      decoration: BoxDecoration(
-                        color: Colors.grey[300],
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(10),
-                        child: Image.asset(
-                          imagePath,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    );
-                  },
-                );
-              }).toList(),
-            ),
+            // CarouselSlider(
+            //   options: CarouselOptions(
+            //     height: 250,
+            //     autoPlay: true,
+            //     enlargeCenterPage: true,
+            //     aspectRatio: 2.0,
+            //   ),
+            //   items: carouselImages.map((imagePath) {
+            //     return Builder(
+            //       builder: (BuildContext context) {
+            //         return Container(
+            //           width: MediaQuery.of(context).size.width,
+            //           margin: const EdgeInsets.symmetric(horizontal: 5.0),
+            //           decoration: BoxDecoration(
+            //             color: Colors.grey[300],
+            //             borderRadius: BorderRadius.circular(10),
+            //           ),
+            //           child: ClipRRect(
+            //             borderRadius: BorderRadius.circular(10),
+            //             child: Image.asset(
+            //               imagePath,
+            //               fit: BoxFit.cover,
+            //             ),
+            //           ),
+            //         );
+            //       },
+            //     );
+            //   }).toList(),
+            // ),
             const SizedBox(height: 20),
             const Text(
               'Tareas pendientes:',
